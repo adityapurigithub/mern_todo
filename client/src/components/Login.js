@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -36,6 +37,8 @@ const Login = () => {
     alert(data.msg);
 
     if (response.ok) {
+      Cookies.set("token_todo", data.token);
+
       navigate("/todos");
     }
   };

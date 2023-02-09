@@ -26,3 +26,13 @@ code {
   background-size: cover;
   background-position: center;
 }
+
+::-webkit-scrollbar {
+  background-color: rgb(95, 95, 95);
+  border-radius: 20px;
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(163, 149, 149);
+  border-radius: 20px;
+}

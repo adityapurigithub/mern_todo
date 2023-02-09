@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
+
 function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate("/login");
+    const user = Cookies.get("token_todo");
+    if (user) {
+      navigate("/todos");
+    } else {
+      navigate("/login");
+    }
   }, []);
 
   return (
