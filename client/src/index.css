@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.App {
+  background-image: url("https://img.freepik.com/free-vector/gradient-network-connection-background_23-2148865393.jpg?t=st=1675919419~exp=1675920019~hmac=d284700f8eef44f1cdbd6074c14c2aeafd8d116304c5a3eed0005b98e0050278");
+  background-size: cover;
+  background-position: center;
+}
