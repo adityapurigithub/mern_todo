@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import user from "./routes/userAPI.js";
 
+import todo from "./routes/todoAPI.js";
+
 import bodyParser from "body-parser";
 import { db } from "./config/db.js";
 
@@ -22,6 +24,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", user);
+
+app.use("/todo", todo);
 
 app.listen(port, (err) => {
   if (err) {
