@@ -4,17 +4,18 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./index.css";
 import App from "./App";
-import { Home, Login, Signup } from "./components";
+import { Todo, Login, Signup } from "./components";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const router = createBrowserRouter([
   {
+    path: "/",
     element: <App />,
     children: [
       {
-        path: "/",
-        element: <Home />,
+        path: "/todos",
+        element: <Todo />,
       },
       {
         path: "/login",

@@ -16,8 +16,13 @@ code {
     monospace;
 }
 
-.App {
+.form-login {
   background-image: url("https://img.freepik.com/free-vector/gradient-network-connection-background_23-2148865393.jpg?t=st=1675919419~exp=1675920019~hmac=d284700f8eef44f1cdbd6074c14c2aeafd8d116304c5a3eed0005b98e0050278");
+  background-size: cover;
+  background-position: center;
+}
+.form-signup {
+  background-image: url("https://img.freepik.com/free-vector/halftone-background-with-circles_23-2148907689.jpg?w=996&t=st=1675920960~exp=1675921560~hmac=bfdf32cf9b7a0a1d090c6dee63499d6ba269be1958023a360385475255184e70");
   background-size: cover;
   background-position: center;
 }

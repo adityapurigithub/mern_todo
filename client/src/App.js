@@ -1,12 +1,15 @@
-import { useState } from "react";
-import { Outlet } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 function App() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/login");
+  }, []);
+
   return (
-    <div className="App min-h-screen bg-slate-800 text-center text-cyan-100 flex md:justify-center p-5">
-      <div className="overflow-hidden bg-blue-500 md:w-2/4 w-full h-max shadow shadow-stone-500 p-2 my-9 rounded flex justify-center">
-        <Outlet />
-      </div>
+    <div className="App min-h-screen bg-slate-800 text-center text-cyan-100 flex md:justify-center">
+      <Outlet />
     </div>
   );
 }
