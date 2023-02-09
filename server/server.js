@@ -1,6 +1,10 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import user from "./routes/userAPI.js";
+
+import bodyParser from "body-parser";
+import { db } from "./config/db.js";
 
 dotenv.config();
 
@@ -8,9 +12,16 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
+app.use(cors());
+app.use(bodyParser.json());
+
+await db();
+
 app.get("/", (req, res) => {
   res.send("hi");
 });
+
+app.use("/user", user);
 
 app.listen(port, (err) => {
   if (err) {
