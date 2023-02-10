@@ -12,10 +12,14 @@ const todoSchema = new mongoose.Schema(
     notDone: {
       type: Boolean,
     },
+    user_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   {
     timestamps: true,
   }
 );
 
-export default new mongoose.model("todo", todoSchema);
+export default new mongoose.model("Todo", todoSchema);
