@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema(
+import Todo from "./Todo.js";
+const Schema = mongoose.Schema;
+const userSchema = new Schema(
   {
     name: {
       type: String,
@@ -13,6 +15,10 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
+    },
+    todo: {
+      type: [Schema.Types.ObjectId],
+      ref: "Todo",
     },
   },
   {
