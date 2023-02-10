@@ -78,7 +78,7 @@ const Login = () => {
               class="inline-block bg-red-500 px-6 py-2.5 text-white font-semibold text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
               type="submit"
             >
-              Sign Up
+              Login
             </button>
           </div>
           <div class="flex items-center">
