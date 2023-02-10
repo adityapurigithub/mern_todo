@@ -44,8 +44,8 @@ const Login = () => {
   };
 
   return (
-    <div className="form-login w-full p-5 flex justify-center md:items-center">
-      <div className="overflow-hidden bg-blue-500 md:w-2/4 w-full h-max shadow shadow-stone-500 p-2 my-9 rounded flex justify-center">
+    <div className="form-login w-full h-full p-5 flex justify-center md:items-center">
+      <div className="overflow-hidden bg-blue-500 md:w-2/4 w-full h-max shadow shadow-stone-500 p-2 py-5 my-9 rounded flex justify-center">
         <form
           className={`form md:w-2/3 p-5 ease-in-out duration-300`}
           onSubmit={handleLogin}
