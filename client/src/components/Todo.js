@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 
 const Home = () => {
@@ -8,7 +9,8 @@ const Home = () => {
   //for editing a todo
   const [editTodo, setEditTodo] = useState({});
   const [editMode, setEditMode] = useState(false);
-  const [done, setDone] = useState(false);
+
+  const token = Cookies.get("token_todo");
 
   useEffect(() => {
     fetchTodos();
@@ -24,7 +26,11 @@ const Home = () => {
   }, [editTodo]);
 
   const fetchTodos = async () => {
-    const response = await fetch("http://localhost:5000/todo/");
+    const response = await fetch("http://localhost:5000/todo/", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     const data = await response.json();
 
@@ -55,6 +61,7 @@ const Home = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         data: todoInput,
@@ -78,6 +85,7 @@ const Home = () => {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         data: todoInput,
@@ -99,6 +107,9 @@ const Home = () => {
 
     const response = await fetch(`http://localhost:5000/todo/delete/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     const data = await response.json();
@@ -112,35 +123,6 @@ const Home = () => {
   const handleEdit = (todo) => {
     console.log(todo);
     setEditTodo(todo);
-  };
-
-  const handleStatus = (e, id) => {
-    console.log(e.target.name);
-    if (e.target.name === "done") {
-      statusUpdate(true, id);
-    } else {
-      statusUpdate(false, id);
-    }
-  };
-
-  const statusUpdate = async (status, id) => {
-    let done;
-    if (status) {
-      done = true;
-    } else {
-      done = false;
-    }
-
-    const response = await fetch(`http://localhost:5000/todo/status/${id}`, {
-      method: "PATCH",
-      body: JSON.stringify({
-        data: done,
-      }),
-    });
-
-    const data = await response.json();
-
-    console.log(data.msg);
   };
 
   return (
@@ -184,25 +166,10 @@ const Home = () => {
                   className="h-5 md:h-8  mx-3"
                   src="https://cdn-icons-png.flaticon.com/512/3472/3472583.png"
                 />
-                <div className="text-lg font-semibold w-2/3">{todo.name}</div>
+                <div className="text-lg font-semibold w-2/3 capitalize">
+                  {todo.name}
+                </div>
                 <div className="flex p-2 gap-2">
-                  {done ? (
-                    <img
-                      name="not-done"
-                      className="h-5 md:h-6 cursor-pointer"
-                      src="https://cdn-icons-png.flaticon.com/512/190/190411.png"
-                      alt="done"
-                      onClick={(e) => handleStatus(e, todo._id)}
-                    />
-                  ) : (
-                    <img
-                      name="done"
-                      className="h-5 md:h-6 cursor-pointer"
-                      src="https://cdn-icons-png.flaticon.com/512/753/753345.png"
-                      onClick={(e) => handleStatus(e, todo._id)}
-                    />
-                  )}
-
                   <img
                     className="h-5 md:h-6 cursor-pointer"
                     src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png"
