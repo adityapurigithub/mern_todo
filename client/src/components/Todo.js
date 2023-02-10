@@ -26,7 +26,7 @@ const Home = () => {
   }, [editTodo]);
 
   const fetchTodos = async () => {
-    const response = await fetch("http://localhost:5000/todo/", {
+    const response = await fetch("https://mern-todo-bmsi.onrender.com/todo/", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -57,16 +57,19 @@ const Home = () => {
   };
 
   const createTodo = async () => {
-    const response = await fetch("http://localhost:5000/todo/add", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        data: todoInput,
-      }),
-    });
+    const response = await fetch(
+      "https://mern-todo-bmsi.onrender.com/todo/add",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          data: todoInput,
+        }),
+      }
+    );
 
     const data = await response.json();
 
@@ -81,16 +84,19 @@ const Home = () => {
   };
 
   const saveEditedTodo = async (id) => {
-    const response = await fetch(`http://localhost:5000/todo/edit/${id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        data: todoInput,
-      }),
-    });
+    const response = await fetch(
+      `https://mern-todo-bmsi.onrender.com/todo/edit/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          data: todoInput,
+        }),
+      }
+    );
 
     const data = await response.json();
 
@@ -105,12 +111,15 @@ const Home = () => {
   const handleDelete = async (id) => {
     console.log(id);
 
-    const response = await fetch(`http://localhost:5000/todo/delete/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      `https://mern-todo-bmsi.onrender.com/todo/delete/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     const data = await response.json();
 

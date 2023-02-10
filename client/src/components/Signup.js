@@ -20,15 +20,18 @@ const Signup = () => {
     e.preventDefault();
     console.log(form);
 
-    const response = await fetch("http://localhost:5000/user/register", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        data: form,
-      }),
-    });
+    const response = await fetch(
+      "https://mern-todo-bmsi.onrender.com/user/register",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          data: form,
+        }),
+      }
+    );
 
     const data = await response.json();
 
